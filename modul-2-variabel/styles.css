@@ -1,0 +1,5 @@
+.calculator {
+    display: flex;
+    justify-items: center;
+    gap: 10px;
+}

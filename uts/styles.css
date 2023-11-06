@@ -1,0 +1,25 @@
+.products {
+    display: flex;
+    justify-content: space-around;
+}
+.product-view {
+    height: 200px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-cart {
+    background-color: green;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+}
+
+.product-pricing {
+    display: flex;
+    justify-content: space-between;
+}

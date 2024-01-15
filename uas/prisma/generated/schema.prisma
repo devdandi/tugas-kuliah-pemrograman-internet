@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum PAYMENT_STATUS {
+  SUCCESS
+  UNPAID
+}
+
+model categories {
+  id       String     @id @default(cuid())
+  name     String
+  created  DateTime   @default(now())
+  updated  DateTime   @updatedAt
+  products products[]
+}
+
+model products {
+  id         String   @id @default(cuid())
+  categoryId String
+  supplierId String
+  name       String
+  stocks     Int      @default(0)
+  price      Int      @default(0)
+  created    DateTime @default(now())
+  updated    DateTime @updatedAt
+
+  supplier     suppliers      @relation(fields: [supplierId], references: [id])
+  category     categories     @relation(fields: [categoryId], references: [id])
+  transactions transactions[]
+}
+
+model suppliers {
+  id       String     @id @default(cuid())
+  name     String
+  created  DateTime   @default(now())
+  updated  DateTime   @updatedAt
+  products products[]
+}
+
+model transactions {
+  id             String         @id @default(cuid())
+  productId      String
+  quantities     Int            @default(1)
+  payment_status PAYMENT_STATUS @default(UNPAID)
+  created        DateTime       @default(now())
+  updated        DateTime       @updatedAt
+
+  product products @relation(fields: [productId], references: [id])
+}

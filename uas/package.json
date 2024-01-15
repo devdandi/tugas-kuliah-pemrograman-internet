@@ -1,0 +1,30 @@
+{
+  "name": "uas-dandi-ramdani",
+  "version": "0.0.1",
+  "description": "UAS DANDI",
+  "author": {
+    "name": "Dandi Ramdani",
+    "email": "dandi@pindad.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "concurrently --kill-others \"tsc --watch\" \"nodemon build/main.js\""
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0",
+    "@types/node": "^17.0.22",
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15",
+    "pino-pretty": "^7.5.4",
+    "prisma": "^3.11.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.11.0",
+    "dotenv": "^16.0.0",
+    "fastify": "^3.27.4"
+  }
+}
